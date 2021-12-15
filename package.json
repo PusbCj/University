@@ -5,8 +5,7 @@
     "ng": "ng",
     "start": "ng start",
     "build": "ng build",
-    "test": "ng test",
-    "heroku-postbuild": "ng build"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
