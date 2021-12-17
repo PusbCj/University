@@ -1,1 +1,175 @@
-<p>faculty works!</p>
+<div class="container">
+  <div class="row">
+
+
+    <div class="col-12">
+      <div style="border: 1px solid black; padding: 15px; margin: 10px">
+        <div class="row">
+
+
+          <div class="col-sm-2">
+            Nazwa kierunku
+          </div>
+          <div class="col-sm-2">
+            <div>
+              Nazwa uniwersytetu
+            </div>
+          </div>
+          <div class="col-2">
+            <div>
+              Adres
+            </div>
+          </div>
+          <div class="col-2">
+            <div>
+              Opis
+            </div>
+          </div>
+          <div class="col-2">
+            <div>
+              Oceny
+            </div>
+          </div>
+          <div class="col-2">
+            <div>
+              <button class="btn btn-success" (click)="create()">{{buttonLabel}}</button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+    <div class="col-12" *ngIf="createFlag">
+      <div style="border: 1px solid black; padding: 15px; margin: 10px">
+        <div class="row">
+
+
+          <div class="col-sm-2">
+            <input class="form-control" type="text" placeholder="Nazwa kierunku" [(ngModel)]="createdFaculty.name"/>
+          </div>
+          <div class="col-sm-2">
+            <div>
+              <input class="form-control" type="text" placeholder="Nazwa uczelni"
+                     [(ngModel)]="createdFaculty.universityName"/>
+            </div>
+          </div>
+          <div class="col-2">
+            <div>
+              <input class="form-control" type="text" placeholder="Adres" [(ngModel)]="createdFaculty.address"/>
+            </div>
+          </div>
+          <div class="col-3">
+            <div>
+              <textarea class="form-control" placeholder="Opis" row="5"
+                        [(ngModel)]="createdFaculty.description"></textarea>
+            </div>
+          </div>
+          <div class="col-1">
+            <div>
+              <button class="btn btn-success" (click)="save()">Zapisz</button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+    <div class="col-12" *ngFor="let item of result">
+      <div style="border: 1px solid black; padding: 15px; margin: 10px">
+        <div class="row">
+
+
+          <div class="col-sm-2">
+            {{item.name}}
+          </div>
+          <div class="col-sm-2">
+            <div>
+              {{item.universityName}}
+            </div>
+          </div>
+          <div class="col-2">
+            <div>
+              {{item.address}}
+            </div>
+          </div>
+          <div class="col-2">
+            <div>
+              {{item.description}}
+            </div>
+          </div>
+          <div class="col-2">
+            <div>
+              <div *ngFor="let mark of item.markList" class="row">
+                <div class="col-12">
+                  <div>
+                    {{mark?.subject?.name}}:{{mark?.value}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-2">
+            <div>
+              <button class="btn btn-danger" (click)="remove(item)">Usuń</button>
+              <button class="btn btn-danger" (click)="edit(item)">Edytuj</button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div style="border: 1px solid black; padding: 15px; margin: 10px" *ngIf="editId==item.id">
+        <div class="row">
+
+
+          <div class="col-sm-2">
+            <input class="form-control" type="text" placeholder="Nazwa kierunku" [(ngModel)]="editFaculty.name"/>
+          </div>
+          <div class="col-sm-2">
+            <div>
+              <input class="form-control" type="text" placeholder="Nazwa uczelni"
+                     [(ngModel)]="editFaculty.universityName"/>
+            </div>
+          </div>
+          <div class="col-2">
+            <div>
+              <input class="form-control" type="text" placeholder="Adres" [(ngModel)]="editFaculty.address"/>
+            </div>
+          </div>
+          <div class="col-3">
+            <div>
+              <textarea class="form-control" placeholder="Opis" row="5"
+                        [(ngModel)]="editFaculty.description"></textarea>
+            </div>
+          </div>
+          <div class="col-2">
+            <div>
+              <div *ngFor="let mark of editFaculty.markList" class="row">
+                <div class="col-12">
+                  <div>
+                    {{mark?.subject?.name}}:
+                    <input class="form-control" type="text" placeholder="numer" [(ngModel)]="mark.value"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-1">
+            <div>
+              <button class="btn btn-success" (click)="saveEdit()">Zapisz</button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+

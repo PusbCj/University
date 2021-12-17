@@ -1,1 +1,109 @@
-<p>subject works!</p>
+<div class="container">
+  <div class="row">
+
+
+    <div class="col-12">
+      <div style="border: 1px solid black; padding: 15px; margin: 10px">
+        <div class="row">
+
+
+          <div class="col-sm-2">
+            id
+          </div>
+          <div class="col-sm-8">
+            <div>
+              Nazwa przedmiotu
+            </div>
+          </div>
+
+          <div class="col-2">
+            <div>
+              <button class="btn btn-success" (click)="create()">{{buttonLabel}}</button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+    <div class="col-12" *ngIf="createFlag">
+      <div style="border: 1px solid black; padding: 15px; margin: 10px">
+        <div class="row">
+
+
+          <div class="col-sm-2">
+            #
+          </div>
+          <div class="col-sm-8">
+            <div>
+              <input class="form-control" type="text" placeholder="Nazwa przedmiotu"
+                     [(ngModel)]="createdSubject.name"/>
+            </div>
+          </div>
+
+          <div class="col-2">
+            <div>
+              <button class="btn btn-success" (click)="save()">Zapisz</button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+    <div class="col-12" *ngFor="let item of result">
+      <div style="border: 1px solid black; padding: 15px; margin: 10px">
+        <div class="row">
+
+
+          <div class="col-sm-2">
+            {{item.id}}
+          </div>
+          <div class="col-sm-8">
+            <div>
+              {{item.name}}
+            </div>
+          </div>
+
+          <div class="col-2">
+            <div>
+              <button class="btn btn-danger" (click)="remove(item)">Usuń</button>
+              <button class="btn btn-danger" (click)="edit(item)">Edytuj</button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div style="border: 1px solid black; padding: 15px; margin: 10px" *ngIf="editId==item.id">
+        <div class="row">
+
+
+          <div class="col-sm-2">
+            <input class="form-control" type="text" placeholder="id" [(ngModel)]="editSubject.id" disabled/>
+          </div>
+          <div class="col-sm-8">
+            <div>
+              <input class="form-control" type="text" placeholder="Nazwa kierunku"
+                     [(ngModel)]="editSubject.name"/>
+            </div>
+          </div>
+
+          <div class="col-2">
+            <div>
+              <button class="btn btn-success" (click)="saveEdit()">Zapisz</button>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
