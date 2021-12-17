@@ -28,8 +28,8 @@ import {Configuration} from '../configuration';
 @Injectable()
 export class ModelControllerService {
 
-  //protected basePath = 'https://university-pl.herokuapp.com';
-  protected basePath = 'http://localhost';
+  protected basePath = 'https://university-pl.herokuapp.com';
+  //protected basePath = 'http://localhost';
   public defaultHeaders = new HttpHeaders();
   public configuration = new Configuration();
 
