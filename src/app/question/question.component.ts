@@ -77,7 +77,7 @@ export class QuestionComponent implements OnInit {
 
   edit(item: Question) {
     this.editQuestion = item;
-    this.editQuestion.subject = new Subject();
+
     if (item.id == null) {
       return;
     }
