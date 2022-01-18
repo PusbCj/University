@@ -3,4 +3,6 @@ export class SurveyjsQuestions {
   name?: string;
   title?: string;
   isRequired?: boolean;
+  minRateDescription?:string;
+  maxRateDescription?: string;
 }
