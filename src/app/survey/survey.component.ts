@@ -7,6 +7,7 @@ import {RestApiControllerService} from "../restServices/restApiController.servic
 import {SurveyjsQuestions} from "../models/surveyjsQuestions";
 import {Faculty} from "../models/faculty";
 import {Parameters} from "../models/parameters";
+import {Router} from "@angular/router";
 
 
 Survey.StylesManager.applyTheme("modern");
