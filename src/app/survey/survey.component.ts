@@ -66,8 +66,8 @@ export class SurveyComponent implements OnInit {
       survey.onComplete.add(survey => {
         for (let i = 0; i < this.listQuestion.length; i++) {
           this.listAnswer[i] = {
-            subject: this.GetName(this.listQuestion[i],i),
-            mark: survey.getValue(this.GetName(this.listQuestion[i],i)),
+            subject: this.GetName(this.listQuestion[i]),
+            mark: survey.getValue(this.GetName(this.listQuestion[i])),
           }
         }
         //console.log(this.listAnswer);
