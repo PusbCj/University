@@ -25,9 +25,11 @@ export class SurveyComponent implements OnInit {
   listAnswer: Array<Parameters>
   listFaculty:Array<Faculty>;
 
-  constructor(private restApiController: RestApiControllerService) {this.listQuestion = new Array<Question>();
-                                                                    this.listFaculty = new Array<Faculty>();
-                                                                    this.listAnswer = new Array<Parameters>();}
+
+  constructor(private restApiController: RestApiControllerService, private router: Router,)
+                                                    {this.listQuestion = new Array<Question>();
+                                                    this.listFaculty = new Array<Faculty>();
+                                                    this.listAnswer = new Array<Parameters>();}
 
   ngOnInit() {
     this.restApiController.getQuestion().subscribe(res=>{
@@ -38,7 +40,7 @@ export class SurveyComponent implements OnInit {
       for (let i = 0; i < this.listQuestion.length; i++) {
         surveyjsQuestion[i] = {
           type: "rating",
-          name: this.GetName(this.listQuestion[i],i),
+          name: this.GetName(this.listQuestion[i]),
           title: this.listQuestion[i].content,
           isRequired: true,
           minRateDescription: "nie lubie",
@@ -48,26 +50,30 @@ export class SurveyComponent implements OnInit {
 
       //tworzenie jsona konfiguracyjnego do surveyjs
       const json = { locale: "pl",
-        pages: [
-          {questions: surveyjsQuestion}
-        ]
+
+        pages: [{
+        "title": "Wypełnij ankietę",
+        questions: surveyjsQuestion
+        }]
       };
 
       const survey = new Survey.Model(json);
       survey.showNavigationButtons = true;
       survey.showCompletedPage=false;
 
+      //wysyłanie danych na serwer po wciśnięciu przycisku
       survey.onComplete.add(survey => {
-
         for (let i = 0; i < this.listQuestion.length; i++) {
           this.listAnswer[i] = {
             subject: this.GetName(this.listQuestion[i],i),
             mark: survey.getValue(this.GetName(this.listQuestion[i],i)),
           }
         }
-        console.log(this.listAnswer);
+        //console.log(this.listAnswer);
         this.restApiController.getList(this.listAnswer).subscribe(res =>{
-          console.log(res);
+          //console.log(res);
+          localStorage.setItem("data", JSON.stringify(res));
+          this.router.navigate(['summary'])
         });
 
       });
@@ -81,7 +87,7 @@ export class SurveyComponent implements OnInit {
   }
 
   //funkcja pobierająca nazwe z podmacierzy
-  GetName(question: Question, id: number): string{
+  GetName(question: Question,): string{
     return <string>question.subject?.name;
   }
 }

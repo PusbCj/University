@@ -12,6 +12,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {ModelControllerService} from "./restServices/modelController.service";
 import {RestApiControllerService} from "./restServices/restApiController.service";
 import {FormsModule} from "@angular/forms";
+import { SummaryComponent } from './summary/summary.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {FormsModule} from "@angular/forms";
     BackofficeComponent,
     QuestionComponent,
     FacultyComponent,
-    SubjectComponent
+    SubjectComponent,
+    SummaryComponent
   ],
   imports: [
     BrowserModule,

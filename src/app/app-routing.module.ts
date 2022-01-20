@@ -5,6 +5,7 @@ import {SurveyComponent} from "./survey/survey.component";
 import {FacultyComponent} from "./faculty/faculty.component";
 import {QuestionComponent} from "./question/question.component";
 import {SubjectComponent} from "./subject/subject.component";
+import {SummaryComponent} from "./summary/summary.component";
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: '', component: SurveyComponent},
   {path: 'faculty', component: FacultyComponent},
   {path: 'question', component: QuestionComponent},
+  {path: 'summary', component: SummaryComponent},
   {path: 'subject', component: SubjectComponent}
 ];
 
