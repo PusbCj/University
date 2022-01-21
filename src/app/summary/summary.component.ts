@@ -15,7 +15,7 @@ export class SummaryComponent implements OnInit {
     this.listFaculty = new Array<Faculty>();
     this.listFaculty = JSON.parse(localStorage.getItem("data")!);
     console.log(this.listFaculty);
-    localStorage.clear();
+    //localStorage.clear();
   }
 
   ngOnInit(): void {
