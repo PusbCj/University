@@ -42,7 +42,7 @@ export class SurveyComponent implements OnInit {
         surveyjsQuestion[i] = {
           type: "rating",
           name: this.GetName(this.listQuestion[i]),
-          title: this.listQuestion[i].content,
+          title: this.GetName(this.listQuestion[i]),
           isRequired: true,
           minRateDescription: "nie lubie",
           maxRateDescription: "bardzo lubie"
@@ -53,7 +53,7 @@ export class SurveyComponent implements OnInit {
       const json = { locale: "pl",
 
         pages: [{
-        "title": "Wypełnij ankietę",
+        "title": "W skali od 1 do 5 jak badzo lubisz dany przedmiot",
         questions: surveyjsQuestion
         }]
       };
